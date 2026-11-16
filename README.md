@@ -2,7 +2,7 @@
 
 Évaluation de 60 min sur poste : parties 1A à 2C (sites officiels, conseils, mots de passe, double authentification) puis simulateur de connexion renforcée (2D). Tous les sites et données sont fictifs.
 
-> Ce dépôt est issu de la branche `evaluation-demarches` du dépôt `simulateur-identite-numerique`, dont il reprend le style et l'outil de renommage. Il est désormais indépendant.
+> Ce dépôt est issu du dossier `evaluation-demarches/` du dépôt `simulateur-identite-numerique`, dont il reprend le style et l'outil de renommage. Il est désormais indépendant (le dépôt du simulateur ne contient plus l'évaluation).
 
 - Cahier des charges : dans le projet claude.ai « Cours informatique SAPAT ». Corrigé et grille : `Corrigé et grille – Évaluation démarches en ligne.md` (**à ne jamais donner aux élèves**).
 - Livrable : `evaluation-demarches.html`, un seul fichier autonome, sans ressource externe. **Il est généré** : ne pas le modifier à la main.
@@ -26,7 +26,17 @@ Codes par défaut : `4172` → variante A, `8395` → variante B, `0000` ou Ctrl
 
 Puis `node build.js`. Dans les sources, les noms d'origine restent écrits tels quels : `build.js` les remplace au moment de générer le fichier. Si un nom change, penser à mettre à jour le tableau des correspondances du corrigé.
 
-Le vrai nom d'IdentiPass+ (FranceConnect+) est affiché aux élèves (champ `enVrai` dans `src/services.js`). Les autres correspondances sont des réponses de la question 3 : elles ne sont que dans le corrigé.
+**Version 1.2** : les noms, adresses et logos **réels** sont affichés aux élèves (Google, impots.gouv.fr, ameli.fr, FranceConnect / FranceConnect+, L'Identité Numérique La Poste, France Identité, MaPrimeAdapt'), via `noms-services.js` et `logos/`. Les sources gardent les noms inventés d'origine : pour revenir à la version 1.1, remettre les noms d'origine à droite dans `noms-services.js`. La question 3 de la partie 2D (association « nom inventé → nom réel ») est supprimée, ses points sont reversés sur la question 1.
+
+## Versions
+
+- **v1.0** (15/11/2026, première version) : commit `f495464`.
+- **v1.1** (15/11/2026, après la passation test, noms inventés) : commit `6c295c3` (et `1d50c64` dans l'historique rattaché).
+- **v1.2** (16/11/2026, noms réels, question 3 supprimée) : commit « Évaluation démarches v1.2 ».
+
+Pour récupérer une ancienne version : `git checkout 6c295c3 -- .` puis `node build.js` (ou télécharger le commit depuis GitHub). Les versions 1.0 et 1.1 ont d'abord été développées dans le dossier `evaluation-demarches/` du dépôt `simulateur-identite-numerique` : leur historique a été rattaché ici.
+
+Aide à la correction des copies `.json` : `AIDE-CORRECTION-Claude.md` (résumé des changements v1.2) et le corrigé complet.
 
 ## Test local
 

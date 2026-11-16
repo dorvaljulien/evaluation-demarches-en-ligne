@@ -1,6 +1,10 @@
 /* =====================================================================
-   NOMS ET ADRESSES DES SERVICES INVENTÉS
+   NOMS ET ADRESSES DES SERVICES
    Évaluation « Démarches en ligne et identité numérique »
+   ---------------------------------------------------------------------
+   Version 1.2 : les noms et adresses RÉELS sont affichés aux élèves
+   (Google, impots.gouv.fr, FranceConnect+…). Pour revenir aux noms
+   inventés de la version 1.1, remettre à droite le même texte qu'à gauche.
    ---------------------------------------------------------------------
    MODE D'EMPLOI
    1. Changer UNIQUEMENT le texte de DROITE (le nouveau nom).
@@ -22,16 +26,16 @@ module.exports = {
 
   /* ---------- NOMS ---------- */
   noms: {
-    // Services officiels (fictifs)
-    'Fiscalis': 'Fiscalis',                 // impôts (rôle réel : impots.gouv.fr)
-    'Santéa': 'Santéa',                     // assurance maladie (ameli.fr)
-    'IdentiPass': 'IdentiPass',             // connexion unique (FranceConnect) ; « IdentiPass+ » suit tout seul
-    'NumérID': 'NumérID',                   // identité numérique (L'Identité Numérique La Poste)
-    'CartID': 'CartID',                     // identité avec la carte d'identité (France Identité)
-    'HabitatAdapt': 'HabitatAdapt',         // aide pour adapter son logement (MaPrimeAdapt')
+    // Services officiels
+    'Fiscalis': 'impots.gouv.fr',                 // impôts (rôle réel : impots.gouv.fr)
+    'Santéa': 'ameli.fr',                     // assurance maladie (ameli.fr)
+    'IdentiPass': 'FranceConnect',             // connexion unique (FranceConnect) ; « IdentiPass+ » suit tout seul
+    'NumérID': 'L\'Identité Numérique La Poste',                   // identité numérique (L'Identité Numérique La Poste)
+    'CartID': 'France Identité',                     // identité avec la carte d'identité (France Identité)
+    'HabitatAdapt': 'MaPrimeAdapt\'',         // aide pour adapter son logement (MaPrimeAdapt')
 
     // Moteur de recherche
-    'Trouvo': 'Trouvo',
+    'Trouvo': 'Google',
 
     // Intermédiaire payant
     'Adapt\'Senior Dossier': 'Adapt\'Senior Dossier',
@@ -43,11 +47,11 @@ module.exports = {
 
   /* ---------- ADRESSES (barre d'adresse, liens, adresses mail) ---------- */
   adresses: {
-    'identipass.sim': 'identipass.sim',
-    'trouvo.sim': 'trouvo.sim',
-    'habitat-adapt.gouv.sim': 'habitat-adapt.gouv.sim',
-    'habitat-adapt-frais.com': 'habitat-adapt-frais.com',        // faux SMS (variante A) : imiter la vraie adresse
-    'habitatadapt-validation.net': 'habitatadapt-validation.net', // faux SMS (variante B)
+    'identipass.sim': 'franceconnect.gouv.fr',
+    'trouvo.sim': 'google.fr',
+    'habitat-adapt.gouv.sim': 'maprimeadapt.gouv.fr',
+    'habitat-adapt-frais.com': 'maprimeadapt-frais.com',        // faux SMS (variante A) : imiter la vraie adresse
+    'habitatadapt-validation.net': 'maprimeadapt-validation.net', // faux SMS (variante B)
     'adapt-senior-dossier.fr': 'adapt-senior-dossier.fr',
     'maison-confort-blog.fr': 'maison-confort-blog.fr',
     'forum-seniors-bzh.fr': 'forum-seniors-bzh.fr'

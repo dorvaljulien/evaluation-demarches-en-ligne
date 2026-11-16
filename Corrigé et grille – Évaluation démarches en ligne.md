@@ -1,6 +1,6 @@
 # Corrigé et grille — Évaluation « Démarches en ligne et identité numérique »
 
-*1ère SAPAT, informatique (TIM). Fichier élève : `evaluation-demarches.html` (version 1.1, 15/11/2026). Ce document sert à corriger les copies exportées (`.json`). Il ne doit jamais être donné aux élèves.*
+*1ère SAPAT, informatique (TIM). Fichier élève : `evaluation-demarches.html` (version 1.2, 16/11/2026). Ce document sert à corriger les copies exportées (`.json`). Il ne doit jamais être donné aux élèves.*
 
 ## 0. Mode d'emploi pour la correction
 
@@ -22,7 +22,12 @@
 - **2A** : **cinq propositions** au lieu de six (`m4` fichier mdp.txt retirée), classement par **glisser-déposer** (plus de flèches), chaque proposition repérée par une **lettre de couleur** (A à E, tirée au hasard pour chaque copie ; la lettre est dans l'export).
 - **2C** : la question « Est-ce de la double authentification ? » est écrite en toutes lettres dans un encadré et rappelée au-dessus de la colonne Oui/Non (bandeau qui reste visible). `c5` précise le **code de la carte à 4 chiffres tapé sur le terminal de paiement** (A) ou sur le distributeur (B) ; `c6` précise « on approche la carte du terminal, sans taper de code ».
 - **2D** : il est écrit aux élèves qu'**IdentiPass+ correspond à FranceConnect+** (prédiction et bandeau du simulateur). La question 3 ne porte plus que sur NumérID et CartID, avec un **menu déroulant**.
-- **Noms et adresses des services inventés** regroupés dans `noms-services.js`, logos dans le dossier `logos/` (voir le README) pour pouvoir les remplacer sans toucher au reste. Dans l'export, `demandePirate.service` vaut la clé du service (`fiscalis` ou `santea`).
+- **Noms et adresses des services inventés** regroupés dans `noms-services.js` (racine du dépôt), logos dans le dossier `logos/` (voir le README) pour pouvoir les remplacer sans toucher au reste. Dans l'export, `demandePirate.service` vaut la clé du service (`fiscalis` ou `santea`).
+
+### Version 1.2 (16/11/2026, noms réels)
+
+- **Noms et logos réels** : les services inventés sont remplacés par les vrais noms et logos (Google, impots.gouv.fr, ameli.fr, FranceConnect / FranceConnect+, L'Identité Numérique La Poste, France Identité, MaPrimeAdapt'). Les mentions « EN VRAI » et « (fictif) » redondantes sont retirées. Les adresses affichées sont aussi les vraies (`google.fr`, `maprimeadapt.gouv.fr`, `franceconnect.gouv.fr`) ; les faux SMS de frais imitent la vraie adresse (`maprimeadapt-frais.com`, `maprimeadapt-validation.net`). L'intermédiaire payant (Adapt'Senior Dossier) et les sites annexes restent inventés. Les sources gardent les noms inventés : seuls `noms-services.js` et les logos ont changé.
+- **Question 3 (2D) supprimée** : l'association « nom inventé → nom réel » n'a plus d'objet puisque les noms réels sont affichés à l'écran. Ses 0,25 pt sont reversés sur Q1 (l'élément « identité numérique vérifiée » passe de 0,5 à 0,75). La partie 2D reste à 7 pts, le total à 20.
 
 ## 2. Partie 1A — Site officiel ou site à éviter ? (3,5 pts)
 
@@ -137,38 +142,41 @@ Dans l'export, `reponse` vaut `"oui"` ou `"non"`.
 
 **Cas limite** : pour c1, « c'est pareil qu'un seul mot de passe » est accepté (l'idée « un seul type de preuve » est là).
 
-## 7. Partie 2D — Simulateur IdentiPass+ (7 pts)
+## 7. Partie 2D — Simulateur FranceConnect+ (7 pts)
 
-### Correspondances (non affichées aux élèves, sauf IdentiPass+ = FranceConnect+)
+### Correspondances (v1.2 : les noms réels sont affichés aux élèves)
 
-Noms et adresses de ces services : `noms-services.js` ; logos : `logos/`. Si un nom est remplacé, mettre ce tableau à jour.
+Les noms et logos réels sont désormais affichés directement aux élèves. Les **clés internes** de l'export ne changent pas (`demandePirate.service` vaut toujours `fiscalis` ou `santea`).
 
-| Fictif | Rôle réel |
+| Clé (export) | Nom affiché aux élèves |
 |---|---|
-| Trouvo | moteur de recherche |
-| HabitatAdapt (habitat-adapt.gouv.sim) | France Rénov' / MaPrimeAdapt' |
-| IdentiPass / IdentiPass+ | FranceConnect / FranceConnect+ |
-| NumérID | L'Identité Numérique La Poste |
-| CartID | France Identité |
-| Fiscalis, Santéa | impots.gouv.fr, ameli.fr |
-| Adapt'Senior Dossier (adapt-senior-dossier.fr) | intermédiaire payant (49 €) |
+| trouvo | Google (moteur de recherche) |
+| habitatAdapt | MaPrimeAdapt' |
+| identipass / identipassPlus | FranceConnect / FranceConnect+ |
+| numerid | L'Identité Numérique La Poste |
+| cartid | France Identité |
+| fiscalis | impots.gouv.fr |
+| santea | ameli.fr |
+| adaptSenior | Adapt'Senior Dossier (intermédiaire payant, 49 €) |
 
-Données de Mme Prigent : numéro fiscal **99 38 471 205 316** ; code secret NumérID **582914** ; carte d'identité ancien modèle (pas de CartID possible). Demande pirate : **Fiscalis** (A), **Santéa** (B) ; dans l'export, `demandePirate.service` vaut `fiscalis` ou `santea`. Ordre des incidents après le dépôt : A appel puis SMS ; B SMS puis appel. SMS de frais : A 12,90 €, habitat-adapt-frais.com ; B 14,50 €, habitatadapt-validation.net.
+Adresses affichées dans le navigateur (v1.2) : `google.fr`, `maprimeadapt.gouv.fr`, `franceconnect.gouv.fr`, `adapt-senior-dossier.fr` (intermédiaire, inventé), `maison-confort-blog.fr` et `forum-seniors-bzh.fr` (sites annexes, inventés). impots.gouv.fr, ameli.fr et L'Identité Numérique La Poste n'apparaissent que comme noms (notifications, carte de Mme Prigent), pas comme sites visités.
+
+Données de Mme Prigent : numéro fiscal **99 38 471 205 316** ; code secret L'Identité Numérique La Poste **582914** ; carte d'identité ancien modèle (pas de France Identité possible). Demande pirate : **impots.gouv.fr** (A), **ameli.fr** (B) ; dans l'export, `demandePirate.service` vaut `fiscalis` ou `santea`. Ordre des incidents après le dépôt : A appel puis SMS ; B SMS puis appel. SMS de frais : A 12,90 €, maprimeadapt-frais.com ; B 14,50 €, maprimeadapt-validation.net.
 
 ### Prédiction (1 pt) — `reponses.2D.prediction`
 
 | Élément | Pts |
 |---|---|
-| **NumérID** va fonctionner : c'est une identité numérique vérifiée, sur son téléphone | 0,4 |
-| Fiscalis et Santéa ne marchent pas : ce sont des comptes à **mot de passe**, refusés par IdentiPass+ (« porte blindée ») | 0,3 |
-| CartID impossible : sa carte d'identité est l'**ancien modèle** cartonné | 0,3 |
+| **L'Identité Numérique La Poste** va fonctionner : c'est une identité numérique vérifiée, sur son téléphone | 0,4 |
+| impots.gouv.fr et ameli.fr ne marchent pas : ce sont des comptes à **mot de passe**, refusés par FranceConnect+ (« porte blindée ») | 0,3 |
+| France Identité impossible : sa carte d'identité est l'**ancien modèle** cartonné | 0,3 |
 
 ### Réflexes (3,5 pts) — lire `simulateur.resultats`
 
 | Réflexe | Pts | Où lire |
 |---|---|---|
 | Site officiel atteint sans payer l'intermédiaire | 0,5 | `siteOfficielAtteintSansPayer: true`. Cliquer sur la pub sans payer n'est pas pénalisé (voir `resultatSponsoriseClique`). |
-| NumérID choisi, au plus un essai raté avant | 0,5 | `numeridChoisi: true` et `essaisRatesAvantNumerid` ≤ 1 (essais ratés = « ancien identifiant » + CartID). 0,25 si 2 essais ratés ou plus. |
+| L'Identité Numérique La Poste choisie, au plus un essai raté avant | 0,5 | `numeridChoisi: true` et `essaisRatesAvantNumerid` ≤ 1 (essais ratés = « ancien identifiant » + France Identité). 0,25 si 2 essais ratés ou plus. |
 | Numéro fiscal correct | 0,25 | `numeroFiscalCorrect: true` (espaces ignorés) |
 | Demande pirate refusée | 0,75 | `demandePirate.reponse` : `"refusee"` 0,75 ; `"ignoree"` 0,25 (aucun dommage, mais pas de réaction) ; `"refusee"` avec `confirmeeAuMoinsUneFois: true` et sans code saisi : 0,5 ; `"confirmee"` 0 ; `"non-envoyee"` : voir plus bas. |
 | Code non lu au faux conseiller | 0,75 | `appelFauxConseiller` : `"raccroche"`, `"rappel-plus-tard"`, `"refuse"`, `"sans-reponse"` → 0,75 ; `"code-lu"` → 0 |
@@ -181,12 +189,12 @@ Le temps passé dans le simulateur est dans `dureeSimulateur` (secondes).
 
 ### Questions de fin (2,5 pts) — `reponses.2D.questionsFin`
 
-**Q1 (1,25)** — A : M. Le Bris, compte Fiscalis seulement ; B : Mme Tanguy, compte Santéa seulement.
+**Q1 (1,5)** — A : M. Le Bris, compte impots.gouv.fr seulement ; B : Mme Tanguy, compte ameli.fr seulement.
 
 | Élément | Pts |
 |---|---|
-| Son compte à mot de passe n'est **pas accepté** par IdentiPass+ pour cette démarche | 0,5 |
-| Il lui faut une **identité numérique vérifiée** : NumérID (appli + pièce d'identité + smartphone) ou CartID (carte d'identité nouveau format + certification en mairie) | 0,5 |
+| Son compte à mot de passe n'est **pas accepté** par FranceConnect+ pour cette démarche | 0,5 |
+| Il lui faut une **identité numérique vérifiée** : L'Identité Numérique La Poste (appli + pièce d'identité + smartphone) ou France Identité (carte d'identité nouveau format + certification en mairie) | 0,75 |
 | Sinon : faire la demande **par courrier** (ou se faire accompagner) | 0,25 |
 
 **Q2 (1)** — A : Laura (aide à domicile) demande le code secret ; B : Sophie (sa fille) veut installer l'identité de sa mère sur son téléphone.
@@ -200,7 +208,7 @@ Le temps passé dans le simulateur est dans `dureeSimulateur` (secondes).
 
 **Cas limite** : « On ne doit pas faire à la place des gens » seul : 0,25 (ligne « faire avec ») + 0,25 (refus, implicite mais sans ambiguïté) = 0,5.
 
-**Q3 (0,25)** — Menu déroulant (version 1.1), export `questionsFin.q3` : `{ "numerid": …, "cartid": … }`. NumérID = **L'Identité Numérique La Poste** ; CartID = **France Identité**. IdentiPass+ = FranceConnect+ est donné en exemple et n'est plus demandé. 0,125 par réponse juste. Choix proposés : Aidants Connect, Ameli, France Identité, France Travail, FranceConnect, FranceConnect+, L'Identité Numérique La Poste, Mon espace santé, Service-public.gouv.fr, Je ne sais pas. *Question de mémorisation qui repose sur un choix pédagogique (des noms inventés) : peu discriminante, ne pas en tirer de conclusion sur le niveau de l'élève.*
+**Q3 — supprimée (v1.2).** L'association « nom inventé → nom réel » n'a plus d'objet : les noms réels sont affichés à l'écran. Ses 0,25 pt sont reversés sur Q1 (l'élément « identité numérique vérifiée » passe de 0,5 à 0,75). Les questions de fin restent à 2,5 pts (Q1 1,5 + Q2 1).
 
 ### Journal du simulateur (analyse, non noté)
 

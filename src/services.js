@@ -2,7 +2,7 @@
    SERVICES FICTIFS DE L'ÉVALUATION : adresses, couleurs, icônes, logos
    ---------------------------------------------------------------------
    Les NOMS et les ADRESSES se changent dans noms-services.js, à la racine
-   du dépôt, PAS ICI : au moment de
+   du dépôt (commun au simulateur et à l'évaluation), PAS ICI : au moment de
    node build.js, chaque nom d'origine écrit ci-dessous est remplacé par le
    nouveau nom choisi là-bas.
 
@@ -13,9 +13,8 @@
    Ne pas changer les clés (trouvo, habitatAdapt…) : le code, l'export
    des copies et le corrigé s'en servent.
 
-   Les correspondances avec les vrais services NE SONT PAS ici (ce sont
-   des réponses) : voir le corrigé. Seule exception : `enVrai` d'IdentiPass+,
-   affiché volontairement aux élèves.
+   Les noms réels des services viennent de noms-services.js (racine) et
+   sont appliqués par build.js au moment de la génération.
    Après toute modification : node build.js
    ===================================================================== */
 const SERVICES = {
@@ -31,8 +30,7 @@ const SERVICES = {
   },
   identipassPlus: {
     nom: 'IdentiPass+', nomHtml: 'IdentiPass<sup>+</sup>', domaine: 'identipass.sim', lettre: '🔑', couleur: '#2b3440',
-    slogan: 'La connexion renforcée aux services publics',
-    enVrai: 'FranceConnect+'      // affiché aux élèves
+    slogan: 'La connexion renforcée aux services publics'
   },
   identipass: {                   // version « simple » (la demande pirate passe par là)
     nom: 'IdentiPass', domaine: 'identipass.sim', lettre: '🔑', couleur: '#2b3440'

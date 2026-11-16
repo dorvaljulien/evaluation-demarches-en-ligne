@@ -5,7 +5,7 @@
    ===================================================================== */
 const CONFIG = {
   evaluation: 'demarches-identite-1SAPAT',
-  version: '1.1',
+  version: '1.2',
 
   // Code de séance donné au tableau → variante
   codesSeance: { '4172': 'A', '8395': 'B' },
@@ -59,13 +59,6 @@ const CONFIG = {
     { id: 'm6', texte: 'Le même mot de passe, long et compliqué, sur tous les sites' }
   ],
   couleursLettres2A: ['#2f6fd0', '#d9731a', '#23935f', '#9c45bd', '#c23a5b'],
-
-  /* ---------- 2D, question 3 : noms réels (menu déroulant) ----------
-     Services demandés (clés de services.js) et choix proposés dans chaque menu, dans cet ordre. */
-  question3: {
-    services: ['numerid', 'cartid'],
-    choix: ['Aidants Connect', 'Ameli', 'France Identité', 'France Travail', 'FranceConnect', 'FranceConnect+', 'L\'Identité Numérique La Poste', 'Mon espace santé', 'Service-public.gouv.fr']
-  },
 
   /* ---------- Contenus des deux variantes ---------- */
   variantes: {
