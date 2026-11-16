@@ -122,7 +122,7 @@ function renderPrediction(main) {
   main.innerHTML = `<div class="page"><h1>Une démarche avec ${nomHtml('identipassPlus')}</h1>
     <div class="mission"><b>Mission.</b> ${MISSION}</div>
     <div class="pred"><div class="carteinline">${carteHtml()}</div><div>
-      <div class="consigne" style="margin-top:0"><b>Avant de commencer.</b> Pour cette démarche, il faudra se connecter avec <b>${nomHtml('identipassPlus')}</b> <span class="envrai">(dans la vraie vie : <b>${esc(SV.identipassPlus.enVrai)}</b>)</span>. Regardez la carte de Mme Prigent.<br><b>Quel compte va fonctionner ? Pourquoi les autres non ?</b></div>
+      <div class="consigne" style="margin-top:0"><b>Avant de commencer.</b> Pour cette démarche, il faudra se connecter avec <b>${nomHtml('identipassPlus')}</b>. Regardez la carte de Mme Prigent.<br><b>Quel compte va fonctionner ? Pourquoi les autres non ?</b></div>
       <textarea rows="8" id="pred"></textarea>
       <p style="font-size:13px;color:#666">Votre prédiction sera verrouillée, puis le simulateur s'ouvrira. La carte de Mme Prigent restera disponible avec le bouton « Ma carte ».</p>
       <button class="btn" id="btnpred">Valider ma prédiction et ouvrir le simulateur</button></div></div></div>`;
@@ -137,29 +137,20 @@ function renderPrediction(main) {
 }
 
 function renderQuestionsFin(main) {
-  const v = V().sim, Q = E.reponses['2D'].questionsFin, Q3 = CONFIG.question3;
-  if (!Q.q3 || typeof Q.q3 !== 'object') Q.q3 = {};
-  const menu = cle => `<select data-q3="${cle}"><option value="">— Choisir —</option>${Q3.choix.map(c => `<option>${h(c)}</option>`).join('')}<option>Je ne sais pas</option></select>`;
+  const v = V().sim, Q = E.reponses['2D'].questionsFin;
   main.innerHTML = `<div class="page"><h1>Questions de fin</h1>
     <div class="consigne">Le simulateur est terminé. Répondez avec vos mots.</div>
     <div class="sit"><h2>Question 1</h2><div class="dit"><span class="av">💬</span><span>${h(nommer(v.q1))}</span></div><textarea rows="4" data-k="q1"></textarea></div>
-    <div class="sit"><h2>Question 2</h2><div class="dit"><span class="av">💬</span><span>${h(nommer(v.q2))}</span></div><textarea rows="4" data-k="q2"></textarea></div>
-    <div class="sit"><h2>Question 3</h2><p style="margin:0 0 4px">Dans le simulateur, les services ont des noms inventés. <b>Comment s'appellent-ils dans la vraie vie ?</b> Choisissez dans chaque liste.</p>
-      <p style="margin:0 0 10px;font-size:13px;color:#555">Exemple : ${nomHtml('identipassPlus')} s'appelle ${h(SV.identipassPlus.enVrai)} dans la vraie vie.</p>
-      <div class="q3grid">${Q3.services.map(cle => `<b>${nomHtml(cle)}</b><span class="eg">s'appelle en vrai :</span>${menu(cle)}`).join('')}</div></div></div>`;
+    <div class="sit"><h2>Question 2</h2><div class="dit"><span class="av">💬</span><span>${h(nommer(v.q2))}</span></div><textarea rows="4" data-k="q2"></textarea></div></div>`;
   $$('[data-k]', main).forEach(el => lier(el, () => Q[el.dataset.k], x => Q[el.dataset.k] = x));
-  $$('[data-q3]', main).forEach(el => {
-    el.value = Q.q3[el.dataset.q3] || '';
-    el.addEventListener('change', () => { Q.q3[el.dataset.q3] = el.value; sauver(); });
-  });
-  footbar('', null, () => $$('[data-k]', main).filter(el => !el.value.trim()).length + $$('[data-q3]', main).filter(el => !el.value).length);
+  footbar('', null, () => $$('[data-k]', main).filter(el => !el.value.trim()).length);
 }
 
 /* ---------- Coque du simulateur ---------- */
 function renderSim(main) {
   main.className = 'sim';
   main.innerHTML = `<div id="sim">
-    <div id="simbar"><span class="mtx"><b>Mission :</b>${h(MISSION)} <span class="envrai">${nomHtml('identipassPlus')} = ${esc(SV.identipassPlus.enVrai)} dans la vraie vie.</span></span>
+    <div id="simbar"><span class="mtx"><b>Mission :</b>${h(MISSION)}</span>
       <button ${L('ma-carte', 'neutre')} data-act="carte">🪪 Ma carte</button>
       <button class="end" ${L('j-ai-termine', 'neutre')} data-act="terminer">J'ai terminé la démarche</button></div>
     <div id="simmain">
@@ -177,7 +168,7 @@ function renderSim(main) {
         </div>
         <div id="viewport"></div><div id="loadingbar"></div>
       </div>
-      <div id="phonecol"><div id="phone"><div class="scr" id="phscr"></div></div></div>
+      <div id="phonecol"><div id="phone"><div class="scr" id="phscr"></div></div></div><div id="callveil"></div>
     </div></div>`;
   const sim = $('#sim', main);
   sim.addEventListener('click', onSimClick);
@@ -369,7 +360,7 @@ function haTop() {
     <div class="ha-nav"><div class="in"><span data-go="${HA}" ${L('ha-menu-accueil', 'neutre')}>Accueil</span>${['Les aides', 'Actualités', 'Questions fréquentes', 'Trouver un artisan', 'Nous contacter'].map(x => `<span data-go="${HA}/page?t=${encodeURIComponent(x)}" ${L('ha-menu-' + x.toLowerCase().replace(/ /g, '-'), 'sans-objet')}>${x}</span>`).join('')}</div></div>`;
 }
 function haFoot() {
-  return `<div class="ha-foot"><div class="in">${['Mentions légales', 'Données personnelles', 'Gestion des cookies', 'Accessibilité : partiellement conforme', 'Plan du site'].map(x => `<span data-go="${HA}/page?t=${encodeURIComponent(x)}" ${L('ha-pied-' + x.split(' ')[0].toLowerCase(), 'sans-objet')}>${x}</span>`).join('')}<span style="margin-left:auto">${esc(nom('habitatAdapt'))} — service public (fictif)</span></div></div>`;
+  return `<div class="ha-foot"><div class="in">${['Mentions légales', 'Données personnelles', 'Gestion des cookies', 'Accessibilité : partiellement conforme', 'Plan du site'].map(x => `<span data-go="${HA}/page?t=${encodeURIComponent(x)}" ${L('ha-pied-' + x.split(' ')[0].toLowerCase(), 'sans-objet')}>${x}</span>`).join('')}<span style="margin-left:auto">${esc(nom('habitatAdapt'))} — service public</span></div></div>`;
 }
 SITES[HA] = u => {
   const f = F(); f.siteOfficielAtteint = true; if (f.siteOfficielAvantPaiement === null) f.siteOfficielAvantPaiement = !f.intermediairePaye;
@@ -387,7 +378,7 @@ SITES[HA] = u => {
     return Object.assign({}, base, { title: 'Connexion — Déposer une demande | ' + nom('habitatAdapt'), html: wrap(`<div class="ha-crumbs">Accueil › Déposer une demande</div>
       <div class="ha-card"><h1>Déposer une demande d'aide</h1><p style="line-height:1.6">Pour déposer une demande, identifiez-vous.</p>
       ${u.params.ancien ? `<div class="err">La connexion par mot de passe n'est plus possible. Utilisez ${nomHtml('identipassPlus')}.</div>` : ''}
-      <div style="text-align:center;margin:22px 0"><button type="button" class="ip-button" data-go="${IP}/plus?service=habitatadapt" ${L('bouton-identipass-plus', 'utile')}><span class="k">${iconeContenu('identipassPlus')}</span><span class="l"><small>S'identifier avec</small><b>${nomHtml('identipassPlus')}</b></span></button></div>
+      <div style="text-align:center;margin:22px 0"><button type="button" class="fc-plus" data-go="${IP}/plus?service=habitatadapt" ${L('bouton-identipass-plus', 'utile')}>${logo('identipassPlus', `<span class="fc-txt"><small>S'identifier avec</small><b>${nomHtml('identipassPlus')}</b></span>`, 44)}</button></div>
       <p style="text-align:center;font-size:12px"><span style="text-decoration:underline;color:#24506b" data-go="${HA}/page?t=${encodeURIComponent('Qu\'est-ce que ' + nom('identipassPlus') + ' ?')}" ${L('ha-quest-ce-identipass', 'sans-objet')}>Qu'est-ce que ${nomHtml('identipassPlus')} ?</span></p>
       <hr style="border:0;border-top:1px solid #e3e0d8;margin:18px 0">
       <p style="font-size:12.5px"><span style="text-decoration:underline;color:#24506b" data-act="ancien" ${L('ancien-identifiant', 'piege')}>Se connecter avec mon ancien identifiant et mot de passe</span></p></div>`) });
@@ -450,7 +441,7 @@ function envoyerDemande() {
 
 /* ---------- IdentiPass+ ---------- */
 function ipTop() {
-  return `<div class="ip-top"><div class="in"><div class="ip-logo">${logo('identipassPlus', `<span class="k">${iconeContenu('identipassPlus')}</span>${nomHtml('identipassPlus')}`, 30)}</div><span style="font-size:12px;opacity:.75">${esc(SV.identipassPlus.slogan)} (fictive)</span>
+  return `<div class="ip-top"><div class="in"><div class="ip-logo">${logo('identipassPlus', `<span class="fc-word">${nomHtml('identipassPlus')}</span>`, 34)}</div><span class="ip-slogan">${esc(SV.identipassPlus.slogan)}</span>
     <span class="sp"></span><span class="lnk" ${L('identipass-aide', 'sans-objet')}>Aide</span></div></div>`;
 }
 SITES[IP] = u => {
@@ -708,4 +699,6 @@ function renderPhone() {
   scr.innerHTML = sbar + `<div class="content">${body}</div>${over}<div class="homebar"><i data-act="phHome" ${L('telephone-bouton-accueil', 'neutre')}></i></div>`;
   if (keepBanner) scr.appendChild(keepBanner);
   sauver();
+  const sim = $('#sim'); if (sim) sim.classList.toggle('appel', !!(ph.call && ph.call.etape !== 'fin'));
+  const phoneEl = $('#phone'); if (phoneEl) phoneEl.classList.toggle('vibre', !!(ph.call && ph.call.etape === 'ring'));
 }

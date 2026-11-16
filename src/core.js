@@ -208,7 +208,7 @@ function afficherAccueil() {
         <li>Répondez avec vos mots, en phrases courtes. <b>N'écrivez pas votre nom.</b></li>
         <li>À la fin, vous enregistrerez votre copie avec le nom donné par le professeur.</li>
       </ul>
-      <div class="warn">Tous les sites, noms et numéros du simulateur sont inventés. Ne saisissez jamais vos vraies informations.</div>
+      <div class="warn">Tous les sites et numéros du simulateur sont fictifs. Ne saisissez jamais vos vraies informations.</div>
     </div><div class="codebox">
       <h2>Code de séance</h2><p>Saisissez le code écrit au tableau.</p>
       <input id="codeinput" maxlength="4" inputmode="numeric" autocomplete="off">
